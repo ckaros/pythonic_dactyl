@@ -7,37 +7,44 @@ columns=6
 
 plate = Keyboard_matrix(5, 6, 0, 0, 3, [0,0,10], 0,15,0, 19,19)
 
+
+#project rows and cols
 plate.project_rows(90)
 plate.project_cols(200)
 
 plate.ik[0][0]=True
 
+
+#translate columns y from projected positions to achieve a staggered column setup
 plate.cm[1][1]=plate.cm[1][1]+2
 plate.cm[2][1]=plate.cm[2][1]+4
 plate.cm[3][1]=plate.cm[3][1]+3
-#plate.cm[4][1]=plate.cm[4][1]+1
 
+#drop the middle columns z from projected positions to achieve a look similar to dactyl
 plate.cm[2][2]=plate.cm[2][2]-8
 plate.cm[3][2]=plate.cm[3][2]-4
 
 plate.generate()
 
 
-#thumbcluster
+#thumb cluster
 plate2 = Keyboard_matrix(3, 3, 0, 0, 10, [-20,-5.3,16], 0,15,0, 19,19)
 
 plate2.ik[2][2]=True
 plate2.ik[1][2]=True
 plate2.ik[1][1]=True
 
+#project rows and cols
 plate2.project_rows(100)
 plate2.project_cols(300)
 
+#translate 2u thumb keys up half a space
 plate2.im[0][2]=[0, 9.5, 0, 0, 0, 0]
 plate2.im[0][1]=[0, 9.5, 0, 0, 0, 0]
 
 plate2.generate()
 
+#angle by which to rotate thumb cluster
 thumbangle=18
 
 
